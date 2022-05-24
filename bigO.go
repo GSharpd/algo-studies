@@ -28,7 +28,8 @@ func main() {
 }
 
 // #Big O Cheat Sheet:
-// -Big OsO(1) Constant- no loops
+// -Big Os
+// O(1) Constant- no loops
 // O(log N) Logarithmic- usually searching algorithms have log n if they are sorted (Binary Search)
 // O(n) Linear- for loops, while loops through n items
 // O(n log(n)) Log Liniear- usually sorting operations
@@ -43,7 +44,8 @@ func main() {
 // Comparisons (<, >, ==)
 // Looping (for, while)
 // Outside Function call (function())
-// -Rule BookRule 1: Always worst Case
+// -Rule Book
+// Rule 1: Always worst Case
 // Rule 2: Remove Constants
 // Rule 3: Different inputs should have different variables. O(a+b). A and B arrays nested would be
 // O(a*b)

@@ -98,8 +98,8 @@ func (q *Queue) Pop() *Node {
 	return node
 }
 
-func (q *Queue) Peek() *Node {
-	return q.nodes[q.head]
+func (q *Queue) Peek() int {
+	return q.head
 }
 
 func main() {

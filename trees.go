@@ -64,6 +64,72 @@ func (t *Tree) Lookup(value int32) *TreeNode {
 	return currentNode
 }
 
+// I hate this implementation and want to kill myself for it
+func (t *Tree) RemoveNode(value int32) bool {
+	if t.root == nil {
+		return false
+	}
+
+	currentNode := t.root
+	parentNode := t.root
+
+	for currentNode != nil {
+		if value < currentNode.data {
+			currentNode = currentNode.left
+		} else if value > currentNode.data {
+			currentNode = currentNode.right
+		} else if value == currentNode.data {
+			if currentNode.right == nil {
+				if parentNode == nil {
+					t.root = currentNode.left
+				} else {
+					if currentNode.data < parentNode.data {
+						parentNode.left = currentNode.left
+					} else {
+						parentNode.right = currentNode.left
+					}
+				}
+			} else if currentNode.right.left == nil {
+				currentNode.right.left = currentNode.left
+				if parentNode == nil {
+					t.root = currentNode.right
+				} else {
+					if currentNode.data < parentNode.data {
+						parentNode.left = currentNode.right
+					} else if currentNode.data > parentNode.data {
+						parentNode.right = currentNode.right
+					}
+				}
+			} else {
+				leftmost := currentNode.right.left
+				leftmostParent := currentNode.right
+				for leftmost.left != nil {
+					leftmostParent = leftmost
+					leftmost = leftmost.left
+				}
+
+				leftmostParent.left = leftmost.right
+				leftmost.left = currentNode.left
+				leftmost.right = currentNode.right
+
+				if parentNode == nil {
+					t.root = leftmost
+				} else {
+					if currentNode.data < parentNode.data {
+						parentNode.left = leftmost
+					} else if currentNode.data > parentNode.data {
+						parentNode.right = leftmost
+					}
+				}
+			}
+
+			return true
+		}
+	}
+
+	return false
+}
+
 func main() {
 	tree := &Tree{}
 
@@ -76,4 +142,9 @@ func main() {
 	tree.Insert(1)
 	fmt.Println(tree.Lookup(15))
 	fmt.Println(tree.Lookup(4))
+
+	nodeRemoved := tree.RemoveNode(15)
+
+	fmt.Println(nodeRemoved)
+	fmt.Println(tree.RemoveNode(22))
 }

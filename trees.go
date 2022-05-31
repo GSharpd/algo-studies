@@ -75,4 +75,5 @@ func main() {
 	tree.Insert(15)
 	tree.Insert(1)
 	fmt.Println(tree.Lookup(15))
+	fmt.Println(tree.Lookup(4))
 }

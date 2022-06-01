@@ -49,6 +49,14 @@ func (g *Graph) ShowConnections() {
 	fmt.Println(g.numberOfNodes)
 }
 
+func (g *Graph) ShowNodeConnection(node int) {
+	fmt.Printf("%d --> ", node)
+	for _, value := range g.adjacencyList[node] {
+		fmt.Printf("%d ", value)
+	}
+	fmt.Println()
+}
+
 func main() {
 	graph := Graph{}
 	graph.AddVertex()
@@ -61,4 +69,5 @@ func main() {
 	graph.AddEdge(2, 1)
 	graph.AddEdge(1, 3)
 	graph.ShowConnections()
+	graph.ShowNodeConnection(2)
 }

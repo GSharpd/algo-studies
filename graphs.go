@@ -30,6 +30,7 @@ type Graph struct {
 
 func (g *Graph) AddEdge(from, to int) {
 	g.adjacencyList[from] = append(g.adjacencyList[from], to)
+	g.adjacencyList[to] = append(g.adjacencyList[to], from)
 }
 
 func (g *Graph) AddVertex() {
@@ -54,12 +55,10 @@ func main() {
 	graph.AddVertex()
 	graph.AddVertex()
 	graph.AddVertex()
-	graph.AddVertex()
 	graph.adjacencyList = make([][]int, graph.numberOfNodes)
 	graph.AddEdge(0, 2)
 	graph.AddEdge(2, 3)
 	graph.AddEdge(2, 1)
 	graph.AddEdge(1, 3)
-	graph.AddEdge(4, 2)
 	graph.ShowConnections()
 }

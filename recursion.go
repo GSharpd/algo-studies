@@ -39,11 +39,10 @@ func findFactorialRecursive(n int) int {
 	return res
 }
 
+// O(n)
 func fibonacciIterative(n int) int {
-	if n == 0 {
-		return 0
-	} else if n == 1 {
-		return 1
+	if n < 2 {
+		return n
 	} else {
 		var a, b int = 0, 1
 		for i := 2; i <= n; i++ {
@@ -53,6 +52,7 @@ func fibonacciIterative(n int) int {
 	}
 }
 
+// O(2^n)
 func fibonacciRecursive(n int) int {
 	if n < 2 {
 		return n

@@ -40,7 +40,7 @@ func (g *Graph) AddVertex() {
 
 func (g *Graph) ShowConnections() {
 	for i := 0; i < g.numberOfNodes; i++ {
-		fmt.Printf("%d: ", i)
+		fmt.Printf("%d --> ", i)
 		for _, value := range g.adjacencyList[i] {
 			fmt.Printf("%d ", value)
 		}
